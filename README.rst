@@ -12,3 +12,11 @@ REST API:
 Postman
 
 
+### Установка пакетов в безопасном режиме:
+
+pip install -Ur .\requirements.txt --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org
+
+
+
+
+
