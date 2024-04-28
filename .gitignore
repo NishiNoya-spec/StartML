@@ -114,3 +114,23 @@ docker/web/env/.env
 
 /components/backend_tpqc/.coveragerc
 .s3cfg
+
+*.csv
+*.xlsx
+machine_learning/less_1/data/*
+machine_learning/less_2/data/*
+machine_learning/less_3/data/*
+machine_learning/less_4/data/*
+machine_learning/less_5/data/*
+machine_learning/less_6/data/*
+machine_learning/less_7/data/*
+machine_learning/less_8/data/*
+machine_learning/less_9/data/*
+machine_learning/less_10/data/*
+machine_learning/less_11/data/*
+machine_learning/less_12/data/*
+machine_learning/less_13/data/*
+machine_learning/less_14/data/*
+machine_learning/less_15/data/*
+machine_learning/less_16/data/*
+machine_learning/less_17/data/*
