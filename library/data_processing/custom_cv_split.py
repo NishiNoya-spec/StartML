@@ -23,6 +23,38 @@
 
 """
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def split_data_by_time(X, y, time_column, split_date):
+    """
+    Отделяет валидационные данные от тренировочных по времени.
+
+    Параметры:
+    - X: DataFrame с признаками.
+    - y: Series с целевой переменной.
+    - time_column: имя столбца, содержащего информацию о времени.
+    - split_date: дата, по которую происходит разделение.
+
+    Возвращает:
+    - X_train: DataFrame с тренировочными признаками.
+    - X_val: DataFrame с валидационными признаками.
+    - y_train: Series с тренировочными метками.
+    - y_val: Series с валидационными метками.
+    """
+    X_train = X[X[time_column] < split_date]
+    X_val = X[X[time_column] >= split_date]
+    y_train = y[y.index.isin(X_train.index)]
+    y_val = y[y.index.isin(X_val.index)]
+    return X_train, X_val, y_train, y_val
+
+###* Отделим валидацию от теста по времени
+
+X_test, X_train = X[X.date >= '2017-06-01'], X[X.date < '2017-06-01']
+y_test, y_train = y[y.index.isin(X_test.index)], y[y.index.isin(X_train.index)]
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 from sklearn.model_selection import train_test_split, cross_validate
 
 def custom_cv_split(X, y, test_size=0.25, random_state=None):
