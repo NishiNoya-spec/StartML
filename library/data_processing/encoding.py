@@ -655,3 +655,36 @@ class EncoderTransformer_(BaseEstimator, TransformerMixin):
         return X[col]
 
 
+
+#~ ==========================================================>>
+
+
+from sklearn.compose import ColumnTransformer
+from category_encoders import TargetEncoder
+from category_encoders.one_hot import OneHotEncoder
+from sklearn.preprocessing import StandardScaler
+
+
+cols_for_ohe = [x for x in categorical_cols if X_train[x].nunique() < 5]
+cols_for_mte = [x for x in categorical_cols if X_train[x].nunique() >= 5]
+numeric_cols = list(X_train.select_dtypes(exclude='object').columns)
+
+### сохраним индексы этих колонок
+
+cols_for_ohe_idx = [list(X_train.columns).index(col) for col in cols_for_ohe]
+cols_for_mte_idx = [list(X_train.columns).index(col) for col in cols_for_mte]
+numeric_cols_idx = [list(X_train.columns).index(col) for col in numeric_cols]
+
+t = [('OneHotEncoder', OneHotEncoder(), cols_for_ohe_idx),
+     ('MeanTargetEncoder', TargetEncoder(), cols_for_mte_idx),
+     ('StandardScaler', StandardScaler(), numeric_cols_idx)]
+
+col_transform = ColumnTransformer(transformers=t)
+
+
+from sklearn.pipeline import Pipeline
+
+pipe_dt = Pipeline([
+    ("column_transformer", col_transform),
+    ("decision_tree", DecisionTreeRegressor(random_state=2))
+])

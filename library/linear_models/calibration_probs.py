@@ -1,3 +1,21 @@
+
+"""
+Калибровка позволяет улучшить точность вероятностных предсказаний модели.
+
+Методы калибровки классификаторов:
+
+1. Platt Scaling (sigmoid):
+
+- Ограниченный набор данных;
+- Линейные зависимости в данных;
+
+2. Isotonic Regression (isotonic):
+
+- Большое кол-во данных;
+- Учет сложных нелинейных зависимостей;
+
+"""
+
 from sklearn.calibration import CalibratedClassifierCV
 
 class PlattScalingCalibrator:
@@ -26,3 +44,4 @@ class PlattScalingCalibrator:
 #~ pipe_calibrated = calibrator.fit(X_train, Y_train, method='isotonic')
 
 ### *********************
+
