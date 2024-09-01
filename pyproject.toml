@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "finalproject-2"
+version = "0.1.0"
+description = ""
+authors = ["Danil"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.11"  # Указываем версию Python, которую вы используете
+pandas = "^2.2.2"
+fastapi = "^0.111.1"
+SQLAlchemy = "^2.0.31"
+requests = "^2.32.3"
+catboost = "^1.2.5"
+numpy = "^1.26.0"  # 1.26.4 for torch = 2.4.0
+pydantic = "^2.8.2"
+scikit-learn = "^1.5.1"
+lightgbm = "^4.5.0"
+xgboost = "^2.1.0"
+psycopg2-binary = "^2.9.9"
+uvicorn = "^0.16.0"
+category-encoders = "^2.5.0"
+loguru = "^0.7.2"
+implicit = "^0.7.2"
+lightfm = "^1.12"
+notebook = "^7.2.1"
+seaborn = "^0.13.2"
+openpyxl = "^3.1.5"
+statsmodels = "^0.14.2"
+plotly = "^5.23.0"
+scipy = "^1.14.0"
+tqdm = "^4.66.4"
+torch = "^2.3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
